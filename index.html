@@ -7,7 +7,7 @@
 
 	<title>2016 年终技术分享 - Maples7</title>
 
-	<link rel="stylesheet" href="css/reveal.css">
+	<!--<link rel="stylesheet" href="css/reveal.css">-->
 	<link rel="stylesheet" href="css/theme/black.css">
 
 	<!-- Theme used for syntax highlighting of code -->
@@ -175,7 +175,7 @@
 							- mocha/should(chai)/supertest/istanbul
 						<br /><br />
 						- Log System
-							- ELK, bunyan, log4js……
+							- ELK, bunyan, log4js, morgan……
 						<br /><br />
 						- Message Queue
 							- kafka, rabbitMQ……
@@ -206,6 +206,37 @@
 						- [再谈 API 的撰写 - 契约](https://zhuanlan.zhihu.com/p/20691806)
 						- [谈谈编译和运行](https://zhuanlan.zhihu.com/p/20691721)
 						- [如何愉快地写个小parser](https://zhuanlan.zhihu.com/p/20178871)
+					</script>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>一些值得一提的新技术</h2>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## GraphQL
+
+						- 让前端来决定它需要什么信息
+							- 所有返回数据的一个子集
+							- 作用：
+								- 减少 HTTP 调用
+								- 减轻后端的负担（文档、参数验证、统一数据返回、序列化等）
+						<br /><br />
+						- Google+ API: [Partial Response](https://developers.google.com/+/web/api/rest/#partial-response)
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## [FeathersJS](https://docs.feathersjs.com/testing/readme.html)
+
+						- Realtime: Socket.io, Primus
+						<br /><br />
+						- _Very Easy_ to use, compared with Express
+							- Unfair, it's based on Express and have good **encapsulation** and **CLI**
+						<br /><br />
+						- 对关键问题的处理方法十分标准
+							- the most important thing!
 					</script>
 				</section>
 			</section>
