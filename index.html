@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>2016 年终技术分享</title>
+	<title>2016 年终技术分享 - Maples7</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css">
@@ -27,12 +27,188 @@
 	<div class="reveal">
 		<div class="slides">
 			<section>
-					<h2>2016 年终技术分享</h2>
-					<h4>一些值得关注的新技术、工具与技术理念</h4>
-					<p>
-						<small>Created by <a target="_blank" href="http://maples7.com">Maples7</a></small>
-					</p>
+				<h2>2016 年终技术分享</h2>
+				<h4>构建合格的 API Server & 一些值得关注的新技术</h4>
+				<br />
+				<p>
+					<small>by <a target="_blank" href="http://maples7.com">Maples7</a></small><br />
+					<small>2017.1</small>
+				</p>
+			</section>
+			<section data-markdown>
+				<script type="text/template">
+					## 项目回顾    
+
+					- 游戏论坛（微博） <!-- .element: class="fragment" data-fragment-index="1" -->
+						- 落实到实现细节的 Node 实践，学到很多
+					<br /><br />
+					- DC2016 / IF2017 <!-- .element: class="fragment" data-fragment-index="2" -->
+						- 自动化测试的重要性
+					<br /><br />
+					- DC <!-- .element: class="fragment" data-fragment-index="3" -->
+						- 项目起始进行合理架构和规划的重要性
+				</script>
+			</section>
+			<section>
+				<section data-markdown>
+					<script type="text/template">
+						## [构建一个合格的 RESTful API Server](http://maples7.com/2016/09/05/build-qualified-restful-api-server/)
+					</script>
 				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Objectives
+
+						- Indirection & pipeline
+						- RESTful & HTTP(S)
+						- Validation, document & auto-test
+						- Security & throttling
+						- Introspection
+						- Scalable
+						- ……
+					</script>
+				</section>
+				<section>
+					<h2>架构</h2>
+					<img data-src="resource/img/architecture1.png" alt="Down arrow" class="fragment">
+					<img data-src="resource/img/architecture2.png" alt="Down arrow" class="fragment">
+					<small class="fragment">图片来源：<a href="https://zhuanlan.zhihu.com/p/20691649">https://zhuanlan.zhihu.com/p/20691649</a></small>
+				</section>
+				<section>
+					<h2>Process Pipeline</h2>
+					<img data-src="resource/img/process-pipeline1.png" alt="Down arrow" class="fragment">
+					<small class="fragment">图片来源：<a href="https://zhuanlan.zhihu.com/p/20691649">https://zhuanlan.zhihu.com/p/20691649</a></small>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Protocol Done Right
+
+						- REST 
+							- GET, POST, PUT, PATCH, DELETE
+						<br /><br />
+						- HTTP Headers
+							- Accept(content type negotiation), If-Modified-Since/If-None-Match, If-Match/If-Modified
+						<br /><br />
+						- HTTP Status Code
+							- 2XX, 3XX, 4XX, 5XX
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Security & Validation
+
+						- Authentication
+							- 使用 token（JWT）而不是 Session 进行验证
+						<br /><br />
+						- Authorization & ACT(Access Control List)
+							- **什么人** 可以做 **什么事**
+							- HTTP BASIC Auth，OAuth，HMAC Auth......
+						<br /><br />
+						- Data Validation
+							- 请求的 Header, URL, Body 及其参数类型、范围、长度等等都是否合法
+						<br /><br />
+						- HTTPS
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Throttling & Conditional Request
+
+						- Conditional Request
+							- If-Match/If-Modified(If-None-Match/If-Not-Modified)
+							- 作用：
+								- 304
+								- 数据改动的并发控制
+						<br /><br />
+						- Throttling
+							- 防止 DOS 和 Replay 攻击
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Normalization
+
+						- Request
+							- Client Adapter
+							- Paginator
+							- Input Data Adapter
+						<br /><br />
+						- Response
+							- Output Data Adapter
+							- Aliasing
+							- Partial Response
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Hooks
+
+						- preprocessing 
+						- postprocessing
+						<br /><br />
+						- Koa 的「洋葱体」结构
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## 技术选型
+
+						- Web Framework 
+							- Express/FeathersJS/Hapi/Restify, Django/Flask, Plug/Phoenix……
+						<br /><br />
+						- ORM 
+							- Sequelize, Mongoose, Waterline……
+						<br /><br />
+						- Document 
+							- [Swagger](http://maples7.com/2016/09/06/build-doc-system-of-express-api-server-with-swagger/), RAML, API Blueprint, apidoc……
+						<br /><br />
+						- Data Validation 
+							- Swagger 插件, joi, JSON Schema……
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## 技术选型
+
+						- Test Framework 
+							- ava/rewire/supertest/nyc
+							- mocha/should(chai)/supertest/istanbul
+						<br /><br />
+						- Log System
+							- ELK, bunyan, log4js……
+						<br /><br />
+						- Message Queue
+							- kafka, rabbitMQ……
+						<br /><br />
+						- ……
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## 「编译时」与「运行时」
+
+						<br />
+						- 自动化文档？输入参数验证？自动化测试？
+						<br /><br />
+						- 写一个 Parser！
+							- RegExp?
+							- Parser Generator: instaparse(Clojure), Jison(JavaScript), antlr4, parsec(Haskell)
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## 推荐阅读
+
+						- [撰写安全合格的REST API](https://zhuanlan.zhihu.com/p/20034107)
+						- [再谈 API 的撰写 - 总览](https://zhuanlan.zhihu.com/p/20691602)
+						- [再谈 API 的撰写 - 架构](https://zhuanlan.zhihu.com/p/20691649)
+						- [再谈 API 的撰写 - 子系统](https://zhuanlan.zhihu.com/p/20691777)
+						- [再谈 API 的撰写 - 契约](https://zhuanlan.zhihu.com/p/20691806)
+						- [谈谈编译和运行](https://zhuanlan.zhihu.com/p/20691721)
+						- [如何愉快地写个小parser](https://zhuanlan.zhihu.com/p/20178871)
+					</script>
+				</section>
+			</section>
 		</div>
 	</div>
 
@@ -40,18 +216,20 @@
 	<script src="js/reveal.js"></script>
 
 	<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
-				]
-			});
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			],
+
+			transition: 'convex'
+		});
 	</script>
 </body>
 
