@@ -262,7 +262,7 @@
 						- Functional Promgamming
 							- Neat, clean and graceful
 						<br /><br />
-						- Born Concurrency
+						- Born Concurrency, Pattern Matching, Hot Reload
 						<br /><br />
 						- 强大的工具链
 					</script>
@@ -274,7 +274,342 @@
 				</section>
 				<section>
 					<h2>PlantUML</h2>
-					<img data-src="resource/img/architecture1.png" alt="Down arrow" class="fragment">
+					<img data-src="resource/img/plantuml.png" alt="Down arrow">
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## [devdocs.io](http://devdocs.io/)
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## [codelf](https://unbug.github.io/codelf/)
+						<br />
+						### There are only two hard things in Computer Science: cache invalidation and naming things.
+						#### —— Phil Karlton
+					</script>
+				</section>
+				<section>
+					<h2>Zsh, oh my zsh, babun</h2>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Transfer to ES6/7</h2>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## const & let
+
+						- Use _const_ for all of your references; avoid using _var_.
+						- If you must reassign references, use _let_ instead of _var_.
+						- _typeof_ is no longer safe because of _Temporal Dead Zones (TDZ)_.
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Use computed property
+
+						```js
+						function getKey(k) {
+							return `a key named ${k}`;
+						}
+
+						// bad
+						const obj = {
+							id: 5,
+							name: 'San Francisco',
+						};
+						obj[getKey('enabled')] = true;
+
+						// good
+						const obj = {
+							id: 5,
+							name: 'San Francisco',
+							[getKey('enabled')]: true,
+						};
+						```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Use shorthand
+
+						```js
+						// bad
+						const atom = {
+							value: 1,
+
+							addValue: function (value) {
+								return atom.value + value;
+							},
+						};
+
+						// good
+						const atom = {
+							value: 1,
+
+							addValue(value) {
+								return atom.value + value;
+							},
+						};
+						
+						// ---------------------------
+
+						const lukeSkywalker = 'Luke Skywalker';
+
+						// bad
+						const obj = {
+							lukeSkywalker: lukeSkywalker,
+						};
+
+						// good
+						const obj = {
+							lukeSkywalker,
+						};
+						```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Use rest operator
+
+						```js
+						// bad
+						const original = { a: 1, b: 2 };
+						const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
+
+						// good
+						const original = { a: 1, b: 2 };
+						const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
+
+						const { a, ...noA } = copy; // noA => { b: 2, c: 3 }
+
+						// ---------------------------
+
+						// bad
+						const len = items.length;
+						const itemsCopy = [];
+						let i;
+
+						for (i = 0; i < len; i += 1) {
+							itemsCopy[i] = items[i];
+						}
+
+						// good
+						const itemsCopy = [...items];
+						
+						// ---------------------------
+
+						// bad
+						function concatenateAll() {
+							const args = Array.prototype.slice.call(arguments);
+							return args.join('');
+						}
+
+						// good
+						function concatenateAll(...args) {
+							return args.join('');
+						}
+
+						// ---------------------------
+
+						// bad
+						const x = [1, 2, 3, 4, 5];
+						console.log.apply(console, x);
+
+						// good
+						const x = [1, 2, 3, 4, 5];
+						console.log(...x);
+
+						// bad
+						new (Function.prototype.bind.apply(Date, [null, 2016, 08, 05]));
+
+						// good
+						new Date(...[2016, 08, 05]);
+						```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Destructuring
+				
+						```js
+						// bad
+						function getFullName(user) {
+							const firstName = user.firstName;
+							const lastName = user.lastName;
+
+							return `${firstName} ${lastName}`;
+						}
+
+						// good
+						function getFullName(user) {
+							const { firstName, lastName } = user;
+							return `${firstName} ${lastName}`;
+						}
+
+						// best
+						function getFullName({ firstName, lastName }) {
+							return `${firstName} ${lastName}`;
+						}
+						
+						// ---------------------------
+
+						const arr = [1, 2, 3, 4];
+
+						// bad
+						const first = arr[0];
+						const second = arr[1];
+
+						// good
+						const [first, second] = arr;
+						
+						// ---------------------------
+
+						// bad
+						function processInput(input) {
+							// then a miracle occurs
+							return [left, right, top, bottom];
+						}
+
+						// the caller needs to think about the order of return data
+						const [left, __, top] = processInput(input);
+
+						// good
+						function processInput(input) {
+							// then a miracle occurs
+							return { left, right, top, bottom };
+						}
+
+						// the caller selects only the data they need
+						const { left, top } = processInput(input);
+
+						// ---------------------------
+
+						// really bad
+						function handleThings(opts) {
+							// No! We shouldn't mutate function arguments.
+							// Double bad: if opts is falsy it'll be set to an object which may
+							// be what you want but it can introduce subtle bugs.
+							opts = opts || {};
+							// ...
+						}
+
+						// still bad
+						function handleThings(opts) {
+							if (opts === void 0) {
+								opts = {};
+							}
+							// ...
+						}
+
+						// good
+						function handleThings(opts = {}) {
+							// ...
+						}
+						```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Arrow Functions
+				
+						```js
+						// bad
+						[1, 2, 3].map(function (x) {
+							const y = x + 1;
+							return x * y;
+						});
+
+						// good
+						[1, 2, 3].map((x) => {
+							const y = x + 1;
+							return x * y;
+						});
+
+						// ---------------------------
+
+						// bad
+						[1, 2, 3].map(number => {
+							const nextNumber = number + 1;
+							`A string containing the ${nextNumber}.`;
+						});
+
+						// good
+						[1, 2, 3].map(number => `A string containing the ${number}.`);
+
+						// good
+						[1, 2, 3].map((number) => {
+							const nextNumber = number + 1;
+							return `A string containing the ${nextNumber}.`;
+						});
+
+						// good
+						[1, 2, 3].map((number, index) => ({
+							[index]: number
+						}));
+						```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## Class
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						#### Always use _class_ rather than manipulating _prototype_ directly.
+
+						```js
+						// bad
+						function Queue(contents = []) {
+							this.queue = [...contents];
+						}
+						Queue.prototype.pop = function () {
+							const value = this.queue[0];
+							this.queue.splice(0, 1);
+							return value;
+						};
+
+
+						// good
+						class Queue {
+							constructor(contents = []) {
+								this.queue = [...contents];
+							}
+							pop() {
+								const value = this.queue[0];
+								this.queue.splice(0, 1);
+								return value;
+							}
+						}
+						```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						#### Use _extends_ for inheritance.
+
+						```js
+						// bad
+						const inherits = require('inherits');
+						function PeekableQueue(contents) {
+							Queue.apply(this, contents);
+						}
+						inherits(PeekableQueue, Queue);
+						PeekableQueue.prototype.peek = function () {
+							return this._queue[0];
+						}
+
+						// good
+						class PeekableQueue extends Queue {
+							peek() {
+								return this._queue[0];
+							}
+						}
+						```
+					</script>
 				</section>
 			</section>
 		</div>
