@@ -11,13 +11,13 @@
 ## 项目回顾    
 
 - 游戏论坛（微博） <!-- .element: class="fragment" data-fragment-index="1" -->
-- 落实到实现细节的 Node 实践，学到很多 <!-- .element: class="fragment" data-fragment-index="1" -->
+	- 落实到实现细节的 Node 实践，学到很多
 <br /><br />
 - DC2016 / IF2017 <!-- .element: class="fragment" data-fragment-index="2" -->
-- 自动化测试的重要性 <!-- .element: class="fragment" data-fragment-index="2" -->
+	- 自动化测试的重要性
 <br /><br />
 - DC <!-- .element: class="fragment" data-fragment-index="3" -->
-- 项目起始进行合理架构和规划的重要性 <!-- .element: class="fragment" data-fragment-index="3" -->
+	- 项目起始进行合理架构和规划的重要性
 
 
 
