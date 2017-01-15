@@ -20,6 +20,8 @@
 	- 项目起始进行合理架构和规划的重要性
 
 Note:
+三个典型的项目回顾
+
 游戏论坛：至今对我的编码实践有很重要的影响，奠定了一个好的技术观，至少能认清代码的孰好孰坏，能辨明技术发展的方向；
 
 DC2：像薛学长所说，重构人员没有对业务充分了解，所谓重构完全是翻译源代码（.net -> .net core），我们专项小组完全沦为给这个项目做手动测试的 Postman，这样的重构毫无意义。而且，理论上，任何改动都需要对所有接口测试一遍，十分低效，所以深刻认识到要写自动化测试！
@@ -29,6 +31,11 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 
 
 ## [构建一个合格的 RESTful API Server](http://maples7.com/2016/09/05/build-qualified-restful-api-server/)
+
+Note:
+既然谈到合理规划的重要性，那先讲讲如何构建一个合格的 RESTful API Server，至少明白需要做些哪些事情，怎样做才标准。
+我其实对要讲的这些还实践不多（现阶段基本是陷在业务里，项目组里也很难给你探索新技术的氛围和时间），但觉得这样的规划是比较合理和标准的。
+侧重 Node 开发，但是这些概念其实是与语言无关的。
 
 
 ## Objectives
@@ -41,6 +48,15 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 - Scalable
 - ……
 
+Note:
+首页确立这些基本目标，细节后面再讲：
+- （横向）分层良好 &（纵向）pipeline 清晰
+- 对协议标准严格贯彻
+- 要有验证，也要有自动化文档和自动化测试
+- 安全和访问控制也要有
+- 内省，日志收集、项目状态、API状态、自我监控等等
+- 可扩展
+
 
 ## 架构
 
@@ -51,11 +67,18 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 ![复杂项目架构图](resource/img/architecture2.png "复杂项目架构图")
 <small class="fragment">图片来源：<a href="https://zhuanlan.zhihu.com/p/20691649">https://zhuanlan.zhihu.com/p/20691649</a></small>
 
+Note:
+与上图的区别在于划分出各个子系统，符合微服务的理念，各个子系统之间使用 RPC 进行调用。
+
 
 ## Process Pipeline
 
 <img data-src="resource/img/process-pipeline1.png" alt="Down arrow" class="fragment">
 <small class="fragment">图片来源：<a href="https://zhuanlan.zhihu.com/p/20691649">https://zhuanlan.zhihu.com/p/20691649</a></small>
+
+Note:
+ACL = Access Control List
+先简要过一下，后面再细讲
 
 
 ## Protocol Done Right
@@ -69,11 +92,16 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 - HTTP Status Code
 	- 2XX, 3XX, 4XX, 5XX
 
+Note:
+- PUT 替换，PATCH 修改
+- 根据请求头 Accept 返回相应的返回类型（xml or json...），后面的对于客户端缓存（304）或者对资源并发修改有效
+- 正确返回 Status Code，这样符合标准的客户端才知道怎么正确处理你的返回活着接下来应该做什么
+
 
 ## Security & Validation
 
 - Authentication
-	- 使用 token（JWT）而不是 Session 进行验证
+	- [使用 token（JWT）而不是 Session 进行验证](https://float-middle.com/json-web-tokens-jwt-vs-sessions/)
 <br /><br />
 - Authorization & ACT(Access Control List)
 	- **什么人** 可以做 **什么事**
@@ -83,6 +111,15 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 	- 请求的 Header, URL, Body 及其参数类型、范围、长度等等都是否合法
 <br /><br />
 - HTTPS
+
+Note:
+- 验证，JWT = JSON Web Tokens
+	- 好处：不用存储 Session 也不用对处理 Session 的垃圾回收（减少服务端开销）、不好扩展（Session 必须得存储在一个公共访问的地方，或者做同步，提高了扩展的成本）、是真正符合 REST 协议的（接口无状态，幂等性）、cookie 被截获容易受到 CSRF（跨站请求伪造）攻击
+	- 对参数进行了编码、加密、签名达到验证用户身份或者说状态的目的
+- 授权 & 访问控制列表
+	- 实现复杂的接口访问控制，比如：某接口只允许中国用户在固定的时间段访问
+- 数据校验
+- HTTPS ／ HTTP2
 
 
 ## Conditional Request & Throttling
@@ -95,6 +132,11 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 <br /><br />
 - Throttling
 	- 防止 DOS 和 Replay 攻击
+
+Note:
+- 条件访问
+- 接口访问频率控制，可以用上张 PPT Authorization 的协议实现（字段加时间戳），也可以参考梁学长的分享
+- 重放攻击（将时间戳计算在内）
 
 
 ## Normalization
@@ -109,6 +151,16 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 	- Aliasing
 	- Partial Response
 
+Note:
+- 请求
+	- 客户端相关的信息（比如 device ID、platform、IP……）组成一个 Adapter，在固定的地方处理
+	- 翻页 Adapter，limit ／ offset
+	- 其他输入数据的 Adapter，比如输入数据字段的命名风格和代码里面风格不一致，可以在这里统一适配
+- 返回
+	- 返回数据适配，比输入数据适配承担更多的功能：多个数据表信息的组合、同一类信息输出格式风格的统一、命名风格转换等
+	- 字段别名（数据库字段的重命名），统一在某处处理
+	- 部分返回，只返回客户端需要的，之后还会再细讲
+
 
 ## Hooks
 
@@ -116,6 +168,10 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 - postprocessing
 <br /><br />
 - Koa 的「洋葱体」结构
+
+Note:
+对于一些接口的特殊业务需求，可以允许添加 hook 进行扩展，入口和出口处都可能有。
+感觉可以和 Koa 的洋葱体的 Process Pipeline 稍微类比一下。
 
 
 ## 技术选型
@@ -132,6 +188,12 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 - Data Validation 
 	- Swagger 插件, joi, JSON Schema……
 
+Note:
+- JS、Python、Elixir
+- Waterline 的优势在于同时支持各种主流的关系型和非关系型数据库，这样代码与数据库类型无关，要换数据库几乎不用改动代码，达到解耦的目的
+- Swagger 虽然上手门槛相对高一些，但是很强大，形成了生态，可以围绕文档做很多附加的事情（比如参数验证、自动话测试，后面细讲），建议使用
+- joi 是 Hapi 提供的 Validator，没有 JSON Schema 辣么啰嗦。如果不以 Swagger 为中心，还有一条线可以选择：joi 逆向生成 JSON Schema，然后用其生成 Swagger 文档，进而还可以尝试生成自动化测试
+
 
 ## 技术选型
 
@@ -140,12 +202,16 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 	- mocha/should(chai)/supertest/istanbul
 <br /><br />
 - Log System
-	- ELK, bunyan, log4js, morgan……
+	- ELK(ElasticSearch + Logstash + Kibana), bunyan, log4js, morgan……
 <br /><br />
 - Message Queue
   - kafka, rabbitMQ……
 <br /><br />
 - ……
+
+Note:
+- ava 更(gèng)新，可以并发执行、效率很高，而且对 ES6 支持很好
+- ELK：ElasticSearch 负责实时全文检索、Logsash 负责日志转发（所以把所有项目日志放在服务器同样的目录下完全没有必要。很多问题我们的处理方法都太朴素，都是拍脑袋就想出来的，其实很多问题社区已经有了经过长期实践考虑全面踩了很多坑才发展成熟的解决方案，但我们还是用拍脑袋想出来的方案而不去了解社区的优秀实践，费时费力浪费资源。配置文件同理，重要的是做好权限管理，而不是连开发都不能信任不让其知道数据库密码，没有信任什么事情都做不了）、Kibana 负责炫酷的数据可视化；Bunyan：JSON 格式的日志；
 
 
 ## 「编译时」与「运行时」
@@ -157,7 +223,17 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 	- RegExp?
 	- Parser Generator: instaparse(Clojure), Jison(JavaScript), antlr4, parsec(Haskell)
 <br /><br />
-- 不要重复定义！保证文档和代码的一致性！
+- 不要重复定义！最大程度保证文档和代码的一致性！可以解耦合！
+
+Note:
+区分「编译时」和「运行时」（至少有这样的理念）非常重要，编译时可以做很多重要的事情，比如生成自动化文档，进行代码的内省（编译型语言相对于解释型语言的一大优势）等等。静态站点生成器（Hexo）、我用 Reveal.js 做的这个 Slide 都是如此。Parser 无处不在。
+原理上来说，就是在代码运行之前，对代码先进行解析，获取必要的信息。
+项目里面可以怎么做：用 Controller 层的接口注释自动生成 Swagger 文档、自动生成接口参数的 Validator（最大程度的保证文档和代码的一致性，包括输出参数的简单 Validation，验证接口输出行为是否符合预期）、自动生成测试用例（甚至是全自动生成的测试）
+测试还可以怎样做：用固定的（自己定义的）规范来书写测试用例（定义输入输出等等，和文档的定义是类似的，但是可以详细到具体的某一个测例内容），然后用自己写的 Parser 解析读入，再自动进行测试。今后只要维护这样一份类似于 YAML 或者 JSON 的纯粹的测例文件就可以里，Parser 是通用的。
+
+这涉及到编译原理的一些知识，甚至可以自己定义发明一门语言。但是要注意编译（Compile）和解析（Parse）还是不同的。
+
+解耦合是指：代码中的数据和逻辑分离，可以抽离出各个项目通用的 Parser，形成 SDK。
 
 
 ## 推荐阅读
@@ -180,10 +256,19 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 - 建立接口参数的数据模型，并让**前端**来决定它需要的信息
 	- 所有返回数据的一个子集
 	- 作用：
-		- 减少 HTTP 调用
+		- 减少 HTTP 调用，只返回需要的信息（尤其是对于移动端，节省流量很重要）
 		- 减轻后端的负担（文档、参数验证、统一数据返回、序列化等）
 <br /><br />
 - Google+ API: [Partial Response](https://developers.google.com/+/web/api/rest/#partial-response)
+
+Note:
+大概三个月前发布的 1.0 版本。
+前端：大前端，包括移动端。调用链靠前的部分。
+减少 HTTP 调用是指：多个数据集合的组合，一次性返回。简单定义，多个组合成一起的查询形成一个符合前端要求的返回。
+减轻后端的负担：
+	- 文档：定义一个全集即可，不必分各种难以描述的条件分别说明返回；
+	- 参数验证、统一数据返回、序列化：因为定义里数据模型，可以由 GraphQL 的实现来完成；
+Google+ API 的做法：通过请求参数的 fields 字段来告诉后端要哪些信息。
 
 
 ## [FeathersJS](https://docs.feathersjs.com/testing/readme.html)
@@ -196,15 +281,25 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 - 对关键问题的处理方法十分标准
 	- the most important thing!
 
+Note:
+以上是它最大的特点。
+
+CLI：针对 Workflow 有定制的 [yeoman](http://yeoman.io/)，很方便自动生成组件。
+
 
 ## Yarn
 
-- Fast with Cache
+- Fast with Cache and Parallel installation
 <br /><br />
 - Precise
 <br /><br />
 - Compatible
   - the most successful point!
+
+Note:
+- Cache：除了更快还可以有离线模式
+- Precise：验证包的完整性，也会记录包的可靠来源，保证对于同一份 yarn.lock 和 package.json 下到的包完全一致。
+- Compatible：对于现有的 NPM 项目是兼容的（直接 yarn 即可），对于 Node 解析包的机制也是兼容的。
 
 
 ## Erlang/Elixir/Phoenix
@@ -218,6 +313,14 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 <br /><br />
 - 强大的工具链
 
+Note:
+Elixir 兼容 Erlang 虚拟机。
+Born Concurrency：面向并行、actor 并发模型、let it crash、分布式
+Pattern Matching：不用 if-else 或者 Switch，跟同名函数的多态类似，更易扩展
+Hot Reload：可以在线重启系统的某一部分，跟移动端现在的热修复技术（年会那天有人分享这个）有类似之处
+
+三言两语很难讲清楚，我其实了解得也还不深，建议自己去详细了解。
+
 
 
 ## 推荐一些小工具
@@ -226,8 +329,14 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 ## PlantUML
 <img data-src="resource/img/plantuml.png" alt="Down arrow">
 
+Note:
+优势：可以做版本管理、文本信息方便对比解析处理（本质上也是一个 Parser）
+
 
 ## [devdocs.io](http://devdocs.io/)
+
+Note:
+类似于 macOS 上的 Dash，文档的集合，还有版本管理，告别一大堆零散的浏览器书签
 
 
 ## [codelf](https://unbug.github.io/codelf/)
@@ -235,15 +344,30 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 ### There are only two hard things in Computer Science: cache invalidation and naming things.
 #### —— Phil Karlton
 
+Note:
+注意右上角还可以管理你的 GitHub 上 Star 过的项目，可以分组、可以加标签等等。
+
 
 ## [node-modules.com](http://node-modules.com/)
+
+Note:
+Node 开发的一大被忽视的难题就是快速的在茫茫第三发库中找到自己满意的那一个，我曾经有一周大部分时间在找包和阅读各种文档，这个工具可以缓和这个问题。
+搜的是 NPM 包，但是根据 GitHub 的 Star 数和你个人定制的 GitHub 信息（比如关注的人和 Star 的项目）来排序的，找得更快。
 
 
 ## Zsh, oh my zsh, babun
 
+Note:
+一个 Shell，普通青年用 Bash，文艺青年用 Zsh。非常强大的 Shell，可以尝试一下。
+oh my zsh 来管理 Zsh 的配置。
+Windows 上用 babun，默认的 Shell 是 Zsh。
+
 
 
 ## Transfer to ES6/7
+
+Note:
+已经讲了很多了，这部分简略过一下。
 
 
 ## const & let
@@ -251,6 +375,9 @@ DC：老！比我第一次写 PHP 时的版本还要老，代码充斥着不规�
 - Use _const_ for all of your references; avoid using _var_.
 - If you must reassign references, use _let_ instead of _var_.
 - _typeof_ is no longer safe because of _Temporal Dead Zones (TDZ)_.
+
+Note:
+以前写 polyfill 打猴子补丁的时候似乎习惯用 typeof 来判断函数是不是存在，即便不存在也是返回 undefined，不会抛错。但是现在由于临时性死区这张方法已经不在安全了。
 
 
 ## Use computed property
@@ -312,6 +439,9 @@ const obj = {
 };
 ```
 
+Note:
+shorthand: 速记法，简略的表达方式。这里理解为更简洁的语法糖吧。
+
 
 ## Use rest operator
 
@@ -369,6 +499,11 @@ new (Function.prototype.bind.apply(Date, [null, 2016, 08, 05]));
 // good
 new Date(...[2016, 08, 05]);
 ```
+
+Note:
+rest operator: 展开运算符。
+第三个例子：因为历史原因 arguments 知识类数组，没有 join 方法，所以要先 call 传唤成真正的数组，但是 ...args 就可以直接用。
+最后一个例子：曾经遇到过这个问题，第三发库接口是那样设计的，我这边的数据放在数组里，一个个提取出来会很麻烦，用展开运算符就很方便。
 
 
 ## Destructuring
@@ -449,6 +584,12 @@ function handleThings(opts = {}) {
 }
 ```
 
+Note:
+1: 对象的解构；
+2: 数组的解构；
+3: 函数返回一组数据用对象而不是用数组（调用参数同理），不用记参数顺序
+4: 第一个对于传 falsy 的值无效，用函数参数的默认值
+
 
 ## Arrow Functions
 
@@ -488,6 +629,9 @@ function handleThings(opts = {}) {
 }));
 ```
 
+Note:
+注意第二个例子的编码规范：如果只有一个参数并且后面是直接返回的内容（不是大括号括起来的代码块），参数就不加括号
+
 
 ## Class
 
@@ -518,6 +662,9 @@ class Queue {
 }
 ```
 
+Note:
+更简洁，原型链虽说要理解但是尽量少直接在上面操作从而避免出错（避免破坏原型链）
+
 
 #### Use _extends_ for inheritance.
 
@@ -545,7 +692,20 @@ class PeekableQueue extends Queue {
 ## 编程指导理念
 
 
-## Code First or Model First?
+## [Code First or Model First?](https://www.zhihu.com/question/28006283)
+
+Note:
+又是一个容易被忽视的关键性基础问题。
+
+各有优缺点：
+Code First：可以对数据模型做版本管理，代码里面就可以看到数据库数据模型的定义，可以做各种注释（重要！没有注释接手项目的人可能根本不知道数据库里面某个字段表示什么意思，对理解业务造成很大的阻碍）。缺点就是之后对数据模型就行修改很难反映到生产环境的数据库上，现有的用 Sequelize 基本上是手动去加的（其实我觉得可以做到：在 mysql 表 和 information_schema 表里对自己建的表做内省，跟现有定义对比处理再 Alter table，但是实现可能比较麻烦）。
+Model First：先建数据表，再用建的表生成 DAL（Data Access Layer） 代码，适合已经存在的项目。缺点就比较多了，不好做版本管理（以及上文提到的字段注释的问题），自动生成 DAL 代码对如何扩展是一个挑战，而且每次改变表的定义要重新生成 DAL 代码并且手动覆盖原有代码，这就要求必须要求 DSL 里不包含任何业务相关的内容（手动覆盖容易出问题，一不小心可能把写好的业务覆盖了）。
+
+十多年前的 .net 技术栈流行 Model First，但是现在普遍接受的都是 Code First，就连最新的 .net core 框架推荐的 EF Web Framework 都采用的是 Code First 的策略，但是我司的 .net 的技术栈的同事们还是在用代码生成器这种 Model First 的理念指导开发，我个人觉得是已经过时了的。
+
+另外，代码生成器没有良好的 API 文档，没有良好的版本管理，发版更新都是在群里说一声而已。有更好的官方的可能几十上百人在维护的 Web 框架不用，非得自己造一些更烂的轮子。
+
+而且，对于程序员来说，技术（或者说 API）不通用不与社区接轨很有问题，别人要问你平时怎么用 .net 写项目，你说我用公司的代码生成器，相对底层的东西你全都不知道，只是调一调代码生成器的 API，两脸懵逼，根本聊不到一块去，技术得不到社区的认可。甚至可能连如何从零开始写一个 Web 应用都不知道。这样做，很过时，很有问题！反正我个人是觉得我司的 .net 技术栈是有点固步自封不思进取甚至有点刻意排斥新技术的。
 
 
 ## Principles
