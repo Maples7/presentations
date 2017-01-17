@@ -326,7 +326,8 @@ Note:
 Note:
 Elixir 兼容 Erlang 虚拟机。
 
-- Born Concurrency：面向并行、actor 并发模型、let it crash、分布式
+- 函数式编程：JavaScript 其实只是学习了一些表明的函数式编程的技巧，比如函数是一等公民，但本质上有很多函数式编程原则上的要求 JavaScript 是不符合的，比如典型的 不可变状态，在 JS 里轻易就可以破坏这个本质要求，但在 Erlang 里则是有这些约束的（变量只能绑定一次）。
+- Born Concurrency：面向并行、actor 并发模型（不同于 Node.js 单线程的 event-loop 的并发模型，这甚至可以说是并行模型的两个极端，但是 actor 模型写出的代码来反映世界的并行性可能更为清晰和易于理解（Erlang 里的并发是由互相通信的多组顺序进程（Erlang 进程，不是操作系统进程）组成的，没有复杂的互斥、锁等这些概念）；而且 Erlang 的并发是语言本身的 Erlang 虚拟机提供的，与操作系统或任何外部库无关，这意味着在不同操作系统上的并发是可靠且行为一致的）、适应 CPU 的多核化与云计算、let it crash（由于这种并发模型容错性变得特别好）、分布式
 - Pattern Matching：不用 if-else 或者 Switch，跟同名函数的多态类似，更易扩展
 - Hot Reload：可以在线重启系统的某一部分，跟移动端现在的热修复技术（年会那天有人分享这个）有类似之处
 
