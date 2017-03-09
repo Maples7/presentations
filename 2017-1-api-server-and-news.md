@@ -729,7 +729,7 @@ Model First：先建数据表，再用建的表生成 DAL（Data Access Layer）
 
 ## Principles
 
-- DRY - Don't Repeat Yoursel
+- DRY - Don't Repeat Yourself
 - OCP - Open Close Principle
 - SoC - Separation of Concerns
 - IoC - Inversion of Control
