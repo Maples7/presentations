@@ -279,7 +279,7 @@ Facebook 的，大概三个月前发布的 1.0 版本。
 Google+ API 的做法：通过请求参数的 fields 字段来告诉后端要哪些信息。
 
 
-## [FeathersJS](https://docs.feathersjs.com/testing/readme.html)
+## [FeathersJS](https://feathersjs.com/)
 
 - Realtime: Socket.io, Primus
 <br /><br />
