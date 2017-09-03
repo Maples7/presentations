@@ -8,7 +8,9 @@
 
 
 
-## 选择编辑器
+## 1. 选择编辑器
+
+
 
 - Editor or IDE? <!-- .element: class="fragment" data-fragment-index="1" -->
 
@@ -37,3 +39,23 @@ justjavac（上一周刚生了一个女儿）拉的一个 Node 开发群的投�
 
 
 ![VSCode Usage](resource/img/vscode-usage.gif "VSCode Usage Gif")
+
+
+
+## 2. Tips for [Node](https://nodejs.org/) Development
+
+
+
+- <!-- .element: class="fragment" data-fragment-index="1" --> [Prettier](https://github.com/prettier/prettier) <!-- .element: class="fragment" data-fragment-index="1" -->
+
+- <!-- .element: class="fragment" data-fragment-index="2" --> [husky](https://github.com/typicode/husky) <!-- .element: class="fragment" data-fragment-index="2" -->
+
+
+
+## 3. Tips for [Python](https://www.python.org/) Development
+
+
+
+- <!-- .element: class="fragment" data-fragment-index="1" --> [YAPF](https://github.com/google/yapf) <!-- .element: class="fragment" data-fragment-index="1" -->
+
+- <!-- .element: class="fragment" data-fragment-index="2" --> [Anaconda](https://www.anaconda.com/distribution/)? Give [pyenv](https://github.com/pyenv/pyenv) + [pipenv](https://github.com/kennethreitz/pipenv) a chance... <!-- .element: class="fragment" data-fragment-index="2" -->
