@@ -1,5 +1,5 @@
 ## 2017 秋季技术分享
-#### [软件开发工程化思考与实践「乱炖」](http://slides.maples7.com/2017-9.html)
+#### [软件开发的工程化思考与实践「乱炖」](http://slides.maples7.com/2017-9.html)
 <br />
 <p>
   <small>by <a target="_blank" href="http://maples7.com">Maples7</a></small><br />
@@ -42,7 +42,7 @@ justjavac（上一周刚生了一个女儿）拉的一个 Node 开发群的投�
 ## 2. Tips for [Node](https://nodejs.org/) Development
 
 
-### [Prettier](https://github.com/prettier/prettier)
+## [Prettier](https://github.com/prettier/prettier)
 <br />
 "Prettier is an opinionated code formatter."
 
@@ -52,14 +52,14 @@ Note:
 会解析抽象语法树（AST）然后 re-print，保证同样的代码会有同样的 format。
 
 
-### [nvm](https://github.com/creationix/nvm) + [nrm](https://github.com/Pana/nrm)
+## [nvm](https://github.com/creationix/nvm) + [nrm](https://github.com/Pana/nrm)
 <br />
 "Node Version Manager - Simple bash script to manage multiple active node.js versions"
 
 "NPM registry manager, fast switch between different registries: npm, cnpm, nj, taobao"
 
 
-### [husky](https://github.com/typicode/husky)
+## [husky](https://github.com/typicode/husky)
 <br />
 "Git hooks made easy"
 
@@ -71,16 +71,39 @@ pre-commit hook 保证提交之前运行 lint/format/test，防止坏代码污�
 husky 在 npm install 的时候注入 hook。
 
 
+## Recommended Project Structure for [MVC](https://zh.wikipedia.org/wiki/MVC)
+
+```js
+.
+├── bin             // 命令行脚本
+├── config          // 项目配置文件
+├── controllers     // 控制器 Controllers
+├── enums           // 项目常量
+├── lib             // 公共函数库
+├── middlewares     // 中间件 
+├── models          // 模型层 Models
+├── node_modules    // Node.js 依赖目录
+├── proxy           // 代理层，用于封装与其他项目的交互接口
+├── public          // 静态文件 Views
+├── routes          // 路由
+├── servers         // 服务启动入口
+├── services        // 服务层，具体业务在这里实现
+├── test            // 测试
+├── tools           // 工具-与业务有关
+└── utils           // 工具-与业务无关
+```
+
+
 
 ## 3. Tips for [Python](https://www.python.org/) Development
 
 
-### [YAPF](https://github.com/google/yapf)
+## [YAPF](https://github.com/google/yapf)
 <br />
 "In essence, the algorithm takes the code and **reformats it to the best formatting** that conforms to the style guide, even if the original code didn't violate the style guide."
 
 
-### [Anaconda](https://www.anaconda.com/distribution/)?
+## [Anaconda](https://www.anaconda.com/distribution/)?
 ## Give [pyenv](https://github.com/pyenv/pyenv) + [pipenv](https://github.com/kennethreitz/pipenv) a chance...
 
 Note:
@@ -113,11 +136,16 @@ Note:
 简洁高效的随手记录工具
 
 
+## [Octotree](https://github.com/buunguyen/octotree)
+
+![Octotree](resource/img/octotree.png "Octotree")
+
+
 
 ## 5. How to write a pretty README
 
 
-### [art-of-readme](https://github.com/noffle/art-of-readme)
+## [art-of-readme](https://github.com/noffle/art-of-readme)
 
 
 - Your job is to:
@@ -157,7 +185,10 @@ Note:
 - 许可证
 
 
-### [common-readme](https://github.com/noffle/common-readme)
+![Python Requests 包的文档开头部分](resource/img/a-pretty-doc.png "最喜欢的 IDE 投票")
+
+
+## [common-readme](https://github.com/noffle/common-readme)
 
 Note:
 根据 pacakge.json 里的信息自动生成一个良好结构的 README 模板
