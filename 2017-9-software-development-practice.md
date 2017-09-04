@@ -124,7 +124,7 @@ Note:
 
 
 
-## 4. A Few Solid Universal Development Tools
+## 4. A Few Solid Universal Development Tips
 
 
 ## [codelf](https://unbug.github.io/codelf/)
@@ -166,6 +166,30 @@ Note:
 - 解决的问题：某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者你独立开发的，用于多个父项目的库。现在问题来了：你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。
 - 最近的应用场景：kong-mock-server, celery crawler 下属的 worker
 </small>
+
+
+## [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+
+![A successful Git branching model](resource/img/git-branching-model.png "A successful Git branching model")
+
+Note:
+<small>
+master 和 develop 是永久分支，其他都是临时分支。
+
+- hotfix: 针对线上的一些紧急修复的 bug
+- feature: 大的功能、新特性增加
+- release: 预发布版本，一般用于上线前最后的测试
+</small>
+
+
+## [语义化版本 2.0.0](http://semver.org/lang/zh-CN/)
+
+- 版本格式：主版本号.次版本号.修订号
+
+- 版本号递增规则如下：
+    - 主版本号：当你做了不兼容的 API 修改
+    - 次版本号：当你做了向下兼容的功能性新增
+    - 修订号：当你做了向下兼容的问题修正
 
 
 
