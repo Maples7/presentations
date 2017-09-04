@@ -159,7 +159,7 @@ Note:
 ![Octotree](resource/img/octotree.png "Octotree")
 
 
-## git submodule
+## [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 Note:
 <small>
@@ -317,4 +317,3 @@ David Wheeler: 英国计算机科学家，世界上第一个获得计算机 PhD 
     - [内核恐慌 Podcast](https://kernelpanic.fm/)
     - [Teahour FM](http://teahour.fm/)
     - [IT 公论 Podcast](https://ipn.li/itgonglun/)
-
