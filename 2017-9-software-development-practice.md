@@ -10,7 +10,6 @@
 
 ## 1. 选择编辑器
 
-
 - Editor or IDE? <!-- .element: class="fragment" data-fragment-index="1" -->
 
 - Vim and Emacs <!-- .element: class="fragment" data-fragment-index="2" -->
@@ -19,9 +18,10 @@
 
 Note:
 一个跟「世界上最好的语言是什么」一样可以引发社区「战争」的话题。
-其实没有太多可以说的东西，更多只是被安利之后自己在使用过程中去体会，「如人饮水，冷暖自知」。
+其实没有太多可以说的东西，更多只是被安利之后自己在使用过程中去体会，到底怎么样其实是一件「冷暖自知」的事情。
 
 IDE or Editor? 之前也喜欢高大全的东西——用 VS，什么语言写起来都很爽。后来慢慢开始喜欢小而美的东西，一个个小而专一的组件，经过人为的合理编排，像搭乐高一样搭起来，每个组件都发挥它最大的价值。
+
 软件工程很多时候也是如此，核心在于选择符合实际情况的东西，每一个组件都各有各的特点，它们也是各种权衡、各种做 trade-off 的结果，就像 IDE 功能全面省心，但是启动速度就比较慢，很多功能其实可能永远都用不到，那这些用不到的部分其实在你实际使用的过程中不但不会成为优势，反而会成为一种负担。写代码的追求也是如此，每一行代码都发挥它们最大的价值，找到一个抽象层级平衡的点，不多不少。
 
 上古时代的神器：Vim and Emacs，编辑器之神 和 神的编辑器。在服务器环境用得到，还需更多的学习和使用。
@@ -67,17 +67,19 @@ Note:
 
 Note:
 pre-commit hook 保证提交之前运行 lint/format/test，防止坏代码污染远端代码库。
+
 传统手动写 git pre-commit hook 的问题是针对个人本地的，无法与团队共享，尤其是如果项目中期再加入，还可能遭到团队排斥。
 husky 在 npm install 的时候注入 hook。
 
 
-## Recommended Project Structure for [MVC](https://zh.wikipedia.org/wiki/MVC)
+## Recommended Structure for [MVC](https://zh.wikipedia.org/wiki/MVC) Project
 
 ```js
 .
 ├── bin             // 命令行脚本
 ├── config          // 项目配置文件
 ├── controllers     // 控制器 Controllers
+├── doc             // 项目文档
 ├── enums           // 项目常量
 ├── lib             // 公共函数库
 ├── middlewares     // 中间件 
@@ -141,8 +143,15 @@ Note:
 ![Octotree](resource/img/octotree.png "Octotree")
 
 
+## git submodule
 
-## 5. How to write a pretty README
+Note:
+- 解决的问题：某个工作中的项目需要包含并使用另一个项目。也许是第三方库，或者你独立开发的，用于多个父项目的库。现在问题来了：你想要把它们当做两个独立的项目，同时又想在一个项目中使用另一个。
+- 最近的应用场景：kong-mock-server, celery crawler 下属的 worker
+
+
+
+## 5. How to Write A Pretty README
 
 
 ## [art-of-readme](https://github.com/noffle/art-of-readme)
@@ -195,10 +204,74 @@ Note:
 
 
 
+## 6. 编程范式
+<br />
+### 面向对象编程 vs. 函数式编程 <!-- .element: class="fragment" data-fragment-index="1" -->
+
+Note:
+个人经验：写封装好的工具包或者框架适合使用面向对象编程，开发 API Server 写纯后端业务适合函数式编程
+
+
+
+## 7. 工程化思想
+
+
+- DRY - Don't Repeat Yourself <!-- .element: class="fragment" data-fragment-index="1" -->
+- OCP - Open Close Principle <!-- .element: class="fragment" data-fragment-index="2" -->
+- SoC - Separation of Concerns <!-- .element: class="fragment" data-fragment-index="3" -->
+- IoC - Inversion of Control <!-- .element: class="fragment" data-fragment-index="4" -->
+- CoC - Configuration over Convention <!-- .element: class="fragment" data-fragment-index="5" -->
+
+Note:
+主要的一些原则，像 Unix 哲学中单一职责这些都知道的就不说了。
+
+- 不要重复，不要写出意大利面条式的代码。
+- 开闭原则：对扩展开放，对修改封闭。比如某个处理各种消息类型的函数，添加一种新的消息类型时不必修改主函数。解决的办法可以是给每个消息类型都传递自己特有的回调函数，或者用观察者模式彻底解耦都可以。关键在于解耦。
+- 关注点分离：另一个方面的解耦，比如 MVC 模式、模板引擎分离过去 PHP 典型的 HTML 和数据、Parser 将数据和程序逻辑流程分离。
+- 控制反转。核心思想是 "Don't call me, I'll call you"（也叫好莱坞原则，好莱坞经纪人的口头禅）。回调最大的问题不在于 Callback Hell，而在于回调函数的调用没法得到有效控制。Promise 等各种异步流程管理库基本都是利用控制反转来使得程序流程能有效的控制在自己的手中的。
+- 约定优于配置，也叫作按约定编程，它的意思是：为了简单起见，我们写代码按照一定的约定写（代码放在什么目录，用什么文件名，用什么类名等），这样省去了很多不必要的麻烦（但也不失flexibility，因为约定可以通过配置修改）。以前写过一个自动加载路由的包就是为了遵循这个原理（自动从约定的地方加载路由规则，省去很多定义路由的代码）。这样其实是增加了「约束」。
+
+
+## 「约束」与「兼容」
+
+Note:
+一些个人经验：框架等偏底层的东西考虑的应该是多一些**约束**（这样团队协作中才能写出易读易理解的好代码），而第三方工具库、包这些东西则应该多一些**兼容**，接口应该考虑更多的调用方式。
+
+约束对编程有时候其实是一件好事，一个个人的不成熟的瞎想：解释型语言相比编译型语言（脚本语言）缺少约束、而强类型约束严格（一般的解释型的都是弱类型），Python 将这两点中和得很好，所以约束得恰到好处，用起来就很受欢迎。
+
+
 ## 「编译时」与「运行时」
 
+Note:
+区分「编译时」和「运行时」（至少有这样的理念）非常重要。可以用做菜来比喻编程，「编译时」就是准备各种材料——洗菜切菜捣蒜之类的，「运行时」就是正式开火做菜的阶段。「编译时」可以做很多重要的事情，适合进行代码的内省（编译型语言相对于解释型语言的一大优势）等等。静态站点生成器（Hexo）、我用 Reveal.js 做的这个 Slide 都是如此。都是 Parser，而 Parser 无处不在。
+
+原理上来说，就是在代码运行之前，对代码先进行解析，获取必要的信息。
+
+自动加载路由的包其实也是在「编译时」加载路由，运行时路由规则是在内存里面的。
+
+
+## Indirection / Layering
+#### the most important guideline of software developing
+
+
+### All problems in computer science can be solved by another level of indirection.
+#### —— David Wheeler
+
+Note:
+David Wheeler: 英国计算机科学家，世界上第一个获得计算机 PhD 学位的人，剑桥大学三一学院
 
 
 
 ## Thank You
 #### [maples7.com](http://maples7.com)
+
+
+
+## 一些其他推荐
+
+- [软技能 · 代码之外的生存指南](https://book.douban.com/subject/26835090/)
+- [代码时间 Podcast](http://codetimecn.com/)
+    - [内核恐慌 Podcast](https://kernelpanic.fm/)
+    - [Teahour FM](http://teahour.fm/)
+    - [IT 公论 Podcast](https://ipn.li/itgonglun/)
+
