@@ -6,6 +6,11 @@
 	<small>2017.9</small>
 </p>
 
+Note:
+<small>
+前面是一些开发工具推荐，后面会是一些软件工程设计思想。
+</small>
+
 
 
 ## 1. 选择编辑器
@@ -48,7 +53,7 @@ justjavac（上一周刚生了一个四斤多重的女儿）拉的一个 Node �
 
 ## [Prettier](https://github.com/prettier/prettier)
 <br />
-"Prettier is an opinionated code formatter."
+"Prettier is an **opinionated** code formatter."
 
 "Prettier enforces a consistent code style across your entire codebase."
 
@@ -76,6 +81,7 @@ Note:
 pre-commit hook 保证提交之前运行 lint/format/test，防止坏代码污染远端代码库。
 
 传统手动写 git pre-commit hook 的问题是针对个人本地的，无法与团队共享，尤其是如果项目中期再加入，还可能遭到团队排斥。
+
 husky 在 npm install 的时候注入 hook。
 </small>
 
@@ -107,10 +113,24 @@ husky 在 npm install 的时候注入 hook。
 
 ## 3. Tips for [Python](https://www.python.org/) Development
 
+Note:
+<small>
+个人在 Python 工程化经验方面也还很不足，写 Scorpio 的时候很多时候是本能感觉到坏代码的味道，但是对于怎样做是 Best Practice 还需要更多的实践和学习。
+
+这里讲一点我这些天了解到的值得推荐的东西。
+</small>
+
 
 ## [YAPF](https://github.com/google/yapf)
 <br />
 "In essence, the algorithm takes the code and **reformats it to the best formatting** that conforms to the style guide, even if the original code didn't violate the style guide."
+
+Note:
+<small>
+跟 Prettier 设计理念很像。
+
+常规的 lint 只会做一些是否错误的检查，但是这种 formatter 可以保证代码风格的高度一致，也对提升代码质量会很有帮助。
+</small>
 
 
 ## [Anaconda](https://www.anaconda.com/distribution/)?
@@ -119,7 +139,7 @@ husky 在 npm install 的时候注入 hook。
 Note:
 <small>
 - pyenv 相当于 nvm，在同一个主机上管理 Python 的多个版本环境。
-- pipenv 相当于 npm，但是还可以为每个项目建立独立的运行环境。会生成一个类似于 package.json 的文件声明项目依赖，用同样的工具就可以多平台移植，直接 `pipenv install` 一下就可以了。
+- pipenv 相当于 npm，但是还可以为每个项目建立独立的运行环境。关键是会生成一个类似于 package.json 的文件声明项目依赖，而且可以像 npm5 一样锁定依赖树，用同样的工具就可以多平台移植，直接 `pipenv install` 一下就可以了。
 </small>
 
 
@@ -130,10 +150,13 @@ Note:
 ## [codelf](https://unbug.github.io/codelf/)
 <br />
 ### There are only two hard things in Computer Science: cache invalidation and naming things.
+
 #### —— Phil Karlton
 
 Note:
 <small>
+解决最难的事情之一 —— 命名。
+
 注意右上角还可以管理你的 GitHub 上 Star 过的项目，可以分组、可以加标签等等。
 </small>
 
@@ -208,6 +231,12 @@ master 和 develop 是永久分支，其他都是临时分支。
 
 Note:
 <small>
+简要概括一下就是：
+- 告诉他们是什么以及上下文背景
+- 告诉他们实践中看起来长得怎样
+- 告诉他们怎么使用
+- 告诉他们其他相关的细节
+
 另外，写 README 要照顾到阅读者的「认知漏斗」，从上往下逐步出现越来越详尽的细节。Celery 的文档写的中规中矩，但这一点上做得不是很好。
 </small>
 
@@ -247,7 +276,7 @@ Note:
 
 Note:
 <small>
-根据 pacakge.json 里的信息自动生成一个良好结构的 README 模板
+同一个作者写的一个工具，根据 pacakge.json 里的信息自动生成一个良好结构的 README 模板
 </small>
 
 
@@ -301,7 +330,10 @@ Note:
 <small>
 一些个人经验：框架等偏底层的东西考虑的应该是多一些**约束**（这样团队协作中才能写出易读易理解的好代码），而第三方工具库、包这些东西则应该多一些**兼容**，接口应该考虑更多的调用方式。
 
-约束对编程有时候其实是一件好事，一个个人的不成熟的瞎想：解释型语言相比编译型语言（脚本语言）缺少约束、而强类型约束严格（一般的解释型的都是弱类型），Python 将这两点中和得很好，所以约束得恰到好处，用起来就很受欢迎。
+约束对编程有时候其实是一件好事，一个个人的不成熟的瞎想：解释型语言（脚本语言）相比编译型语言缺少约束、而强类型约束严格（一般的解释型的都是弱类型），Python 将这两点中和得很好，所以约束得恰到好处，用起来就很受欢迎。
+
+- 强类型 or 弱类型：核心的区别在于语言是否偏向于容忍隐式的类型转换。
+- 动态类型 or 静态类型：核心区别在于是否在编译时就能明确每一个变量的类型。
 </small>
 
 
@@ -309,7 +341,11 @@ Note:
 
 Note:
 <small>
-区分「编译时」和「运行时」（至少有这样的理念）非常重要。可以用做菜来比喻编程，「编译时」就是准备各种材料——洗菜切菜捣蒜之类的，「运行时」就是正式开火做菜的阶段。「编译时」可以做很多重要的事情，适合进行代码的内省（编译型语言相对于解释型语言的一大优势）等等。静态站点生成器（Hexo）、我用 Reveal.js 做的这个 Slide 都是如此。都是 Parser，而 Parser 无处不在。
+与上文的编译型语言中的「编译」概念不一样，这里是宽泛定义的「编译时」，大体说是程序完全加载到内存长期稳定运行前的准备状态。
+
+区分「编译时」和「运行时」（至少有这样的理念）非常重要（有些地方还更细致的区分出了「构建时」）。可以用做菜来比喻编程，「编译时」就是准备各种材料、做各种检查 —— 洗菜切菜捣蒜、是不是还有油盐酱醋之类的，「运行时」就是正式开火做菜的阶段。
+
+「编译时」可以做很多重要的事情，适合进行代码的内省（编译型语言相对于解释型语言的一大优势，反射的能力）等等。静态站点生成器（Hexo）、我用 Reveal.js 做的这个 Slide 都是如此。这一类程序都是 Parser，而 Parser 无处不在。
 
 原理上来说，就是在代码运行之前，对代码先进行解析，获取必要的信息。
 
@@ -319,6 +355,11 @@ Note:
 
 ## Indirection / Layering
 #### the most important guideline of software developing
+
+Note:
+<small>
+如何解除耦合？分层！
+</small>
 
 
 ### All problems in computer science can be solved by another level of indirection.
