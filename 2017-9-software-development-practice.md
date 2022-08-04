@@ -15,11 +15,11 @@ Note:
 
 ## 1. 选择编辑器
 
-- Editor or IDE? <!-- .element: class="fragment" data-fragment-index="1" -->
+- <!-- .element: class="fragment" data-fragment-index="1" --> Editor or IDE? <!-- .element: class="fragment" data-fragment-index="1" -->
 
-- Vim and Emacs <!-- .element: class="fragment" data-fragment-index="2" -->
+- <!-- .element: class="fragment" data-fragment-index="2" --> Vim and Emacs <!-- .element: class="fragment" data-fragment-index="2" -->
 
-- <!-- .element: class="fragment" data-fragment-index="3" --> [VSCode](https://code.visualstudio.com/) <!-- .element: class="fragment" data-fragment-index="3" -->
+- <!-- .element: class="fragment" data-fragment-index="3" --> <a href="https://code.visualstudio.com/" target="_blank">VSCode</a> <!-- .element: class="fragment" data-fragment-index="3" -->
 
 Note:
 <small>
@@ -53,7 +53,7 @@ justjavac（上一周刚生了一个四斤多重的女儿）拉的一个 Node �
 
 ## [Prettier](https://github.com/prettier/prettier)
 <br />
-"Prettier is an **opinionated** code formatter."
+"Prettier is an <b>opinionated</b> code formatter."
 
 "Prettier enforces a consistent code style across your entire codebase."
 
@@ -86,7 +86,7 @@ husky 在 npm install 的时候注入 hook。
 </small>
 
 
-## Recommended Structure for [MVC](https://zh.wikipedia.org/wiki/MVC) Project
+### Recommended Structure for [MVC](https://zh.wikipedia.org/wiki/MVC) Project
 
 ```js
 .
@@ -123,7 +123,7 @@ Note:
 
 ## [YAPF](https://github.com/google/yapf)
 <br />
-"In essence, the algorithm takes the code and **reformats it to the best formatting** that conforms to the style guide, even if the original code didn't violate the style guide."
+"In essence, the algorithm takes the code and <b>reformats it to the best formatting</b> that conforms to the style guide, even if the original code didn't violate the style guide."
 
 Note:
 <small>
@@ -148,7 +148,7 @@ Note:
 
 
 ## [codelf](https://unbug.github.io/codelf/)
-<br />
+
 ### There are only two hard things in Computer Science: cache invalidation and naming things.
 
 #### —— Phil Karlton
@@ -191,7 +191,7 @@ Note:
 </small>
 
 
-## [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
+### [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 
 ![A successful Git branching model](resource/img/git-branching-model.png "A successful Git branching model")
 
@@ -241,18 +241,16 @@ Note:
 </small>
 
 
-- Checklist:
-
-    - One-liner explaining the purpose of the module
-    - Necessary background context & links
-    - Potentially unfamiliar terms link to informative sources
-    - Clear, runnable example of usage
-    - Installation instructions
-    - Extensive API documentation
-    - Performs cognitive funneling
-    - Caveats and limitations mentioned up-front
-    - Doesn't rely on images to relay critical information
-    - License
+- One-liner explaining the purpose of the module
+- Necessary background context & links
+- Potentially unfamiliar terms link to informative sources
+- Clear, runnable example of usage
+- Installation instructions
+- Extensive API documentation
+- Performs cognitive funneling
+- Caveats and limitations mentioned up-front
+- Doesn't rely on images to relay critical information
+- License
 
 Note:
 <small>
@@ -282,7 +280,7 @@ Note:
 
 
 ## 6. 编程范式
-<br />
+
 ### 面向对象编程 vs. 函数式编程 <!-- .element: class="fragment" data-fragment-index="1" -->
 
 Note:

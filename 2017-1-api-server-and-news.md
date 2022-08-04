@@ -102,14 +102,14 @@ Note:
 
 - Authentication
 	- [使用 token（JWT）而不是 Session 进行验证](https://float-middle.com/json-web-tokens-jwt-vs-sessions/)
-<br /><br />
+<br />
 - Authorization & ACT(Access Control List)
 	- **什么人** 可以做 **什么事**
   - HTTP BASIC Auth，OAuth，HMAC Auth......
-<br /><br />
+<br />
 - Data Validation
 	- 请求的 Header, URL, Body 及其参数类型、范围、长度等等都是否合法
-<br /><br />
+<br />
 - HTTPS
 
 Note:
@@ -129,7 +129,7 @@ Note:
 	- 作用：
 		- 304
 		- 数据改动的并发控制
-<br /><br />
+<br />
 - Throttling
 	- 防止 DOS 和 Replay 攻击
 
@@ -179,13 +179,13 @@ Note:
 
 - Web Framework 
 	- Express/FeathersJS/Hapi/Restify, Django/Flask, Plug/Phoenix……
-<br /><br />
+<br />
 - ORM 
 	- Sequelize, Mongoose, Waterline……
-<br /><br />
+<br />
 - Document 
 	- [Swagger](http://maples7.com/2016/09/06/build-doc-system-of-express-api-server-with-swagger/), RAML, API Blueprint, apidoc……
-<br /><br />
+<br />
 - Data Validation 
 	- Swagger 插件, joi, JSON Schema……
 
@@ -201,13 +201,13 @@ Note:
 - Test Framework 
 	- ava/rewire/supertest/nyc
 	- mocha/should(chai)/supertest/istanbul
-<br /><br />
+<br />
 - Log System
 	- ELK(ElasticSearch + Logstash + Kibana), bunyan, log4js, morgan……
-<br /><br />
+<br />
 - Message Queue
   - kafka, rabbitMQ……
-<br /><br />
+<br />
 - ……
 
 Note:
@@ -217,7 +217,6 @@ Note:
 
 ## 「编译时」与「运行时」
 
-<br />
 - 自动化文档？输入参数验证？自动化测试？
 <br /><br />
 - 写一个 Parser！
@@ -353,8 +352,9 @@ Note:
 
 ## [codelf](https://unbug.github.io/codelf/)
 <br />
-### There are only two hard things in Computer Science: cache invalidation and naming things.
-#### —— Phil Karlton
+<h4>There are only two hard things in Computer Science: cache invalidation and naming things.</h4>
+
+<h6>—— Phil Karlton</h6>
 
 Note:
 注意右上角还可以管理你的 GitHub 上 Star 过的项目，可以分组、可以加标签等等。
