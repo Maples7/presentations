@@ -123,11 +123,13 @@ For photography, you may have known it. I have shared many photos on WeChat Mome
 [知乎](https://www.zhihu.com/people/maples7)
 <!-- .element: style="font-size: 20px" --> 
 
+Note: So, that's all for my ordinary life.
+
 
 
 ## Next Host <!-- .slide: data-auto-animate -->
 
-Note: So, that's all for my ordinary life. For next host,
+Note: For next host,
 
 
 ## Next Host <!-- .slide: data-auto-animate -->
