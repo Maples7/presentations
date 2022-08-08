@@ -61,10 +61,10 @@ Note:
 ## 架构
 
 
-![简单项目架构图](resource/img/architecture1.png "简单项目架构图")
+![简单项目架构图](resource/img/2017/architecture1.png "简单项目架构图")
 
 
-![复杂项目架构图](resource/img/architecture2.png "复杂项目架构图")
+![复杂项目架构图](resource/img/2017/architecture2.png "复杂项目架构图")
 <small class="fragment">图片来源：<a href="https://zhuanlan.zhihu.com/p/20691649">https://zhuanlan.zhihu.com/p/20691649</a></small>
 
 Note:
@@ -73,7 +73,7 @@ Note:
 
 ## Process Pipeline
 
-<img data-src="resource/img/process-pipeline1.png" alt="Down arrow" class="fragment">
+<img data-src="resource/img/2017/process-pipeline1.png" alt="Down arrow" class="fragment">
 <small class="fragment">图片来源：<a href="https://zhuanlan.zhihu.com/p/20691649">https://zhuanlan.zhihu.com/p/20691649</a></small>
 
 Note:
@@ -338,7 +338,7 @@ Elixir 兼容 Erlang 虚拟机。
 
 
 ## PlantUML
-<img data-src="resource/img/plantuml.png" alt="Down arrow">
+<img data-src="resource/img/2017/plantuml.png" alt="Down arrow">
 
 Note:
 优势：可以做版本管理、文本信息方便对比解析处理（本质上也是一个 Parser）

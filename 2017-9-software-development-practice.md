@@ -36,7 +36,7 @@ VSCode：2016.3 推出 1.0 版本，上手简单，使用 Electron 技术，继�
 </small>
 
 
-![最喜欢的 IDE 投票](resource/img/vscode1.PNG "最喜欢的 IDE 投票")
+![最喜欢的 IDE 投票](resource/img/2017/vscode1.PNG "最喜欢的 IDE 投票")
 
 Note:
 <small>
@@ -44,7 +44,7 @@ justjavac（上一周刚生了一个四斤多重的女儿）拉的一个 Node �
 </small>
 
 
-![VSCode Usage](resource/img/vscode-usage.gif "VSCode Usage Gif")
+![VSCode Usage](resource/img/2017/vscode-usage.gif "VSCode Usage Gif")
 
 
 
@@ -179,7 +179,7 @@ Note:
 
 ## [Octotree](https://github.com/buunguyen/octotree)
 
-![Octotree](resource/img/octotree.png "Octotree")
+![Octotree](resource/img/2017/octotree.png "Octotree")
 
 
 ## [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
@@ -193,7 +193,7 @@ Note:
 
 ### [A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/)
 
-![A successful Git branching model](resource/img/git-branching-model.png "A successful Git branching model")
+![A successful Git branching model](resource/img/2017/git-branching-model.png "A successful Git branching model")
 
 Note:
 <small>
@@ -267,7 +267,7 @@ Note:
 </small>
 
 
-![Python Requests 包的文档开头部分](resource/img/a-pretty-doc.png "最喜欢的 IDE 投票")
+![Python Requests 包的文档开头部分](resource/img/2017/a-pretty-doc.png "最喜欢的 IDE 投票")
 
 
 ## [common-readme](https://github.com/noffle/common-readme)

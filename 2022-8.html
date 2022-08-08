@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+        <title>Cabin Fever Reducer for SOX EFun of Microsoft</title>
+
+        <link rel="stylesheet" href="dist/reveal.css">
+        <link rel="stylesheet" href="dist/theme/beige.css" id="theme">
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+    </head>
+    <body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <script src="plugin/tagcloud/TagCloud.min.js"></script>
+                    <div class="r-stack">
+                        <h1>Harry Li</h1>
+                        <div class="tagCloud" align="center" style="font-size: 22px;"></div>
+                    </div>
+                    <script>
+                        var tagCloud = TagCloud(
+                            '.tagCloud', 
+                            ["Harry Potter", "Apple", "Microsoft", "Node.js", "FUJIFILM", "Podcast", "David Fincher", "坂本 龍一", "The Social Network", "三体", "The Count of Monte Cristo", "Maples7", "Matrix67", "7", "Investment", "重庆森林", "Beijing", "Guangzhou", "Suzhou", "Yueyang", "Changsha", "Jinan", "长郡中学", "山东大学", "Elixir", "Python", "maples7.com", "MOOC", "Traveling", "Reading", "www", "Capturing", "Tennis", "Swift", "JavaScript", "smart#1", "浮生散记", "Seniverse", "NOIP", "Student Online"], 
+                            {
+                                // radius in px
+                                radius: 360
+                            }
+                            );
+                    </script>
+                    <aside class="notes">
+                        I'll give you a brief self introduction and then we will come to the game part.
+                    </aside>
+                </section>
+                <section data-markdown="2022-8-efun-cabin-fever-reducer.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n" data-separator-notes="^Note:"></section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+	    <script src="plugin/markdown/markdown.js"></script>
+	    <script src="plugin/notes/notes.js"></script>
+	    <script src="plugin/highlight/highlight.js"></script>
+        <script src="plugin/zoom/zoom.js"></script>
+
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                slideNumber: false,
+                history: true,
+                center: true,
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+                controlsTutorial: true,
+                // More info
+                plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+            });
+        </script>
+    </body>
+</html>
