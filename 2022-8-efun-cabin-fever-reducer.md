@@ -11,7 +11,7 @@ For Childhood
 Note:
 I was born in a small county of Hunan province. It is located in the northernmost part of Hunan Province, adjacent to Hubei Province. As you can see, it's surrounded by many lakes and rivers in the area, which is pretty similar to Suzhou. The most famous ones are Dongting Lake and Yangtze River.
 
-I had a carefree and happy childhood. I studied in several different schools as my parents's job transfers and I made many friends in my schooldays. I didn't have to study too hard to get good grades in school. Till my middle school, I've become one of the best students in the small county.
+I had a carefree and happy childhood. I studied in several different schools as my parents' job transfers and I made many friends in my schooldays. I didn't have to study too hard to get good grades in school. Till my middle school, I've become one of the best students in the small county.
 
 
 
@@ -44,7 +44,7 @@ It's there that I started to write code. In the first year, I spent a lot of tim
 Note:
 After high school, I went to Shandong University majoring in Electrical Engineering. I had many expectations for university life but I quickly realized that it was just another bigger high school. Students study hard to get good grades for a good job basically. But that's not what I wanted. After the experience of high school, I realized my parents were not always make decisions suitable for me. I started to follow my inner voice and made my own decisions. After the first year, I clearly realized that I didn't like my major and I was tired of the cliche in many courses. Also I didn't want to work for the State Grid Corporation of China or 国家电网 after graduation. So I actually didn't put much effort into my major but just learned some basics to ensure I could pass all the tests and exams.
 
-Fortunately, I joined an organization called Student Online (Shen probably knows it) in university, it's like a startup but we don't have to worry about how to make money. Our users are students in university and we basically have no limitations to fulfill our ideas. That's very cool. That's where I started to do backend development and used PHP and Python to write some web applications. That's a good experience and I also made some lifelone close friends.
+Fortunately, I joined an organization called Student Online (Shen probably knows it) in university, it's like a startup but we don't have to worry about how to make money. Our users are students in university and we basically have no limitations to fulfill our ideas. That's very cool. That's where I started to do backend development and used PHP and Python to write some web applications. It's a good experience and I also made some lifelone close friends there.
 
 It's unbeliveable I still had hair at that time.
 
@@ -64,7 +64,7 @@ It's unbeliveable I still had hair at that time.
 <!-- .element: class="fragment" data-fragment-index="3" -->
 
 Note:
-After graduation, I joined a game company in Guangzhou. The company is so-so but I've met a good tech leader, who was strict about code quality. I've laid a good foundation on JavaScript and Node.js during that time. JavaScript is probably not a well-designed programming language, but its tech community is absolutely the best. The community is full of innovative geekers and they're usually active in creating something new and they're willing to share their knowledge. I quit the job after the tech leader left the company and joined a startup in Beijing called Seniverse.
+After graduation, I joined a game company in Guangzhou. The company is so-so but I've met a good tech leader, who was very strict about code quality. I've laid a good foundation on JavaScript and Node.js during that time. JavaScript is probably not a well-designed programming language, but its tech community is absolutely the best. The community is full of innovative geekers and they're usually active in creating something new and they're willing to share their knowledge. I quit the job after the tech leader left the company and joined a startup in Beijing called Seniverse.
 
 This is a company focusing on weather/meteorological business. The team is so great and everyone is creative and professional. Coincidentally, my boss - the CEO - used to be a senior PM in Microsoft Redmond before he founded the company. Gradually I became the head of backend development and had many chances to try my ideas. I mainly write Node.js, Python and Elixir/Erlang there. Elixir or Erlang is a good but niche language. I worked in Beijing for three years.
 
@@ -79,7 +79,7 @@ After that, I joined Microsoft and it's the story with you guys.
 ― [Deborah Meier](https://en.wikipedia.org/wiki/Deborah_Meier)
 
 Note:
-I have many hobbies, I still think it's curiosity that drives me to live. I can talk a little on movies and photography.
+I have many hobbies, I still think it's curiosity that drives me to live. I can talk a little bit on movies and photography today.
 
 (Deborah Meier (born April 6, 1931) is an American educator often considered the founder of the modern small schools movement.)
 
@@ -92,7 +92,7 @@ I have many hobbies, I still think it's curiosity that drives me to live. I can 
 ![Chungking Express](resource/img/2022-8/chungking-express.webp) <!-- .element: class="fragment" data-fragment-index="3" style="max-width: 22%;" data-transition="fade-in fade-out" -->
 
 Note:
-my favorite movie director is David Fincher, he is pretty much like a geeker and has the hacker spirit. He directed my favorite movie The Social Network. My favorite Chinese movie is Chungking Express, directed by Kar Wai Wong (王家卫).
+my favorite movie director is David Fincher, he is pretty much like a geeker and has the hacker spirit. He directed my favorite movie The Social Network. My favorite Chinese movie is Chungking Express/重庆森林, directed by Kar Wai Wong (王家卫).
 
 
 ### Photography <!-- .element: style="margin: 0" -->
@@ -113,6 +113,18 @@ For photography, you may have known it. I have shared many photos on WeChat Mome
 
 
 
+## Thank you!
+
+[Blog](https://maples7.com/) |
+[GitHub](https://github.com/Maples7) |
+[豆瓣](https://www.douban.com/people/MaplesSeven/) |
+[图虫](https://maples7.tuchong.com/) |
+[Weibo](https://weibo.com/u/3888197280) |
+[知乎](https://www.zhihu.com/people/maples7)
+<!-- .element: style="font-size: 20px" --> 
+
+
+
 ## Next Host <!-- .slide: data-auto-animate -->
 
 Note: So, that's all for my ordinary life. For next host,
@@ -122,7 +134,7 @@ Note: So, that's all for my ordinary life. For next host,
 
 ### Any volunteer?
 
-Note: for next host, any volunteer?
+Note: any volunteer?
 
 
 ## Next Host <!-- .slide: data-auto-animate -->
@@ -142,25 +154,13 @@ Note: for next host, any volunteer?
 
 
 
-## Thank you!
-
-[Blog](https://maples7.com/) |
-[GitHub](https://github.com/Maples7) |
-[豆瓣](https://www.douban.com/people/MaplesSeven/) |
-[图虫](https://maples7.tuchong.com/) |
-[Weibo](https://weibo.com/u/3888197280) |
-[知乎](https://www.zhihu.com/people/maples7)
-<!-- .element: style="font-size: 20px" --> 
-
-
-
 # Games!
 <!-- .slide: data-background-image="resource/img/2022-8/splendor.jpg" data-background-opacity="0.25" -->
 
 - UNO, 3~10 people, F61
 - Avalon, 5~10 people, F62
 - Splendor, 2~6 people, F63
-- Werewolf Kill, 7~20 people, F65
+- Werewolf, 7~20 people, F65
 
 Note:
 I've prepared some board games for you guys. We have these ones and feel free to join anyone you like. I high recommend Splendor and I'll personally join this one.
