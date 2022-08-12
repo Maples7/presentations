@@ -165,6 +165,6 @@ Note: any volunteer?
 - Werewolf, 7~20 people, F65
 
 Note:
-I've prepared some board games for you guys. We have these ones and feel free to join anyone you like. I high recommend Splendor and I'll personally join this one.
+I've prepared some board games for you guys. We have these ones and feel free to join any one you like. I highly recommend Splendor and I'll personally join this one.
 
 So, that's all! Have fun!
